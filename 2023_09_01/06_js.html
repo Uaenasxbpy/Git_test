@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML属性操作（对象属性）</title>
+</head>
+<style>
+    .main {
+        color: #003399;
+        font-size: large;
+    }
+
+    .main1 {
+        color: aqua;
+    }
+
+    .main2 {
+        color: blueviolet;
+    }
+
+    .main3 {
+        color: bisque;
+    }
+</style>
+
+<body>
+    <h3>Test1</h3>
+    <input type="text" name="" id="txt" value="修改按钮名称">
+    <input type="button" value="修改" id="btn"><br />
+    <input type="button" value="修改图片" id="btn1"><br />
+    <img src="../images/男.png" alt="?" id="pic"><br />
+
+    <h3>Test2</h3>
+    <div>
+        <label><input type="radio" name="picture" id="" value="../images/iu 21.jpg" checked>picture1</label>
+        <label><input type="radio" name="picture" id="" value="../images/Jisso4.jpg">Picture2</label>
+        <label><input type="radio" name="picture" id="" value="../images/李知恩6.jpg">Picture3</label>
+    </div><br />
+    <input type="button" value="选择图片并修改" id="btn2" style="color: #003399;"><br />
+    <img src="../images/xiaomi1.png" alt="" id="pic1" width="50%" height="50%">
+
+    <h3>Test2</h3>
+    <p class="main">这是通过JavaScript对p标签中文字的样式调整的测试！</p>
+    <p class="main2">你干嘛</p>
+    <h4>请选择样式：</h4>
+    <div>
+        <lable><input type="radio" name="style" value="main1" id="" checked>style1</lable>
+        <lable><input type="radio" name="style" value="main2" id="">style2</lable>
+        <lable><input type="radio" name="style" value="main3" id="">style3</lable>
+    </div><br />
+    <input type="button" value="修改样式" id="btn3">
+    <input type="button" value="删除样式" id="btn4">
+
+</body>
+<script>
+    window.onload = function () {
+        let Obtn = document.getElementById("btn")
+        let Otxt = document.getElementById("txt")
+        Obtn.onclick = function () {
+            Obtn.value = Otxt.value
+        }
+
+        let Obtn1 = document.getElementById("btn1")
+        let Opic = document.getElementById("pic")
+        // alert(Opic.src)
+        Obtn1.onclick = function () {
+            Opic.src = "../images/女.png"
+        }
+        // 根据选择来改变图片
+        let Obtn2 = document.getElementById("btn2")
+        let Opic1 = document.getElementById("pic1")
+        let Opicture = document.getElementsByName("picture")
+        Obtn2.onclick = function () {
+            for (let i = 0; i < Opicture.length; i++) {
+                if (Opicture[i].checked) {
+                    Opic1.src = Opicture[i].value
+                }
+            }
+
+        }
+        let Op = document.getElementsByTagName("p")
+        // alert(Op[0].className)
+        let Obtn3 = document.getElementById("btn3")
+        let Obtn4 = document.getElementById("btn4")
+        let Ostyle = document.getElementsByName("style")
+        // 修改样式
+        Obtn3.onclick = function () {
+            for (let i = 0; i < Ostyle.length; i++) {
+                if (Ostyle[i].checked) {
+                    Op[0].className = Ostyle[i].value
+                    Op[1].className = Ostyle[(i + 2) % Ostyle.length].value
+                    // alert(Ostyle[i].value)
+                }
+            }
+        }
+        // 删除样式
+        Obtn4.onclick = function () {
+            for (let i = 0; i < Op.length; i++) {
+                Op[i].removeAttribute("class")
+            }
+        }
+    }
+</script>
+
+</html>

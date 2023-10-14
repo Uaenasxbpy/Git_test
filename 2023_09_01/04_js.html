@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ZH-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插入表格</title>
+</head>
+<style type="text/css">
+    table {
+        border-collapse: collapse;
+    }
+
+    tr,
+    td {
+        width: 80px;
+        height: 20px;
+        border: 1px solid gray;
+    }
+</style>
+
+<body>
+    <ul id="list">
+        <li>Hello Word!</li>
+        <li>Hello Word!!</li>
+        <li>Hello Word!!!</li>
+        <li>Hello Word!!!!</li>
+        <li>Hello Word!!!!!</li>
+        <li id="licopy">复制元素</li>
+    </ul>
+    <input type="button" name="" id="btn" value="删除">
+    <input type="text" id="txt"><input type="button" name="" id="btn1" value="添加">
+    <input type="button" id="btn2" value="删除全部">
+    <input type="button" name="" id="btn3" value="复制元素">
+</body>
+<script>
+    // for循环添加元素
+    let oTable = document.createElement("table")
+    for (let i = 0; i < 3; i++) {
+        let oTr = document.createElement("tr")
+        for (let j = 0; j < 3; j++) {
+            let oTd = document.createElement("td")
+            oTr.appendChild(oTd)
+        }
+        oTable.appendChild(oTr)
+    }
+    document.body.appendChild(oTable)
+
+    window.onload = function () {
+        let oBt = document.getElementById("btn")
+        let oBt1 = document.getElementById("btn1")
+        let oBt2 = document.getElementById("btn2")
+        let oBt3 = document.getElementById("btn3")
+        let oUl = document.getElementById("list")
+        // 删除函数
+        oBt.onclick = function () {
+            oUl.removeChild(oUl.lastElementChild)
+        }
+        // 添加元素
+        oBt1.onclick = function () {
+            let oTxt = document.getElementById("txt")
+            let textNode = document.createTextNode(oTxt.value)
+            let oLi = document.createElement("li")
+            oLi.appendChild(textNode)
+            oUl.appendChild(oLi)
+        }
+        // 删除全部
+        oBt2.onclick = function () {
+            document.body.removeChild(oUl)
+        }
+        // 复制元素
+        oBt3.onclick = function () {
+            oLi1 = document.getElementById("licopy")
+            document.body.appendChild(oLi1.cloneNode(1))
+        }
+
+    }
+</script>
+
+</html>

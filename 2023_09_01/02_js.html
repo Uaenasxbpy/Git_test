@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ZH-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加元素</title>
+</head>
+<style>
+    li {
+        list-style: none;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    tr,
+    td {
+        width: 80px;
+        height: 20px;
+        border: 1px solid gray;
+    }
+</style>
+
+<body>
+    <div id="nav">
+        <ul>
+            <li>Hello word!!</li>
+            <li>Hello word!!</li>
+            <li>Hello word!!</li>
+            <li>Hello word!!</li>
+        </ul>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        let oDiv = document.getElementById("nav")
+        let oStrong = document.createElement("strong")
+        let oTxt = document.createTextNode("你干嘛")
+        // 向文本节点插入strong元素
+        oStrong.appendChild(oTxt)
+        // 将strong元素插入div元素
+        oDiv.appendChild(oStrong)
+
+        // 添加input元素
+        let oInput = document.createElement("input")
+        oInput.id = "submit"
+        oInput.value = "按钮1"
+        oInput.type = "button"
+        document.body.appendChild(oInput)
+
+        // 添加img元素
+        let oImg = document.createElement("img")
+        oImg.className = "pic"
+        oImg.src = ".\images\男.png"
+        oImg.style.border = "1px solid silver "
+        document.body.appendChild(oImg)
+
+
+    }
+</script>
+
+</html>

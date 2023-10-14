@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ZH-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>替换元素</title>
+</head>
+
+<body>
+    <p style="color: brown;">替换元素</p>
+    输入标签：<input type="text" name="" id="tag" /><br />
+    输入内容：<input type="text" name="" id="txt" /><br />
+    <input type="button" id="btn" value="提交">
+</body>
+<script>
+    window.onload = function () {
+        let oBt = document.getElementById("btn")
+        oBt.onclick = function () {
+            // 获取需要替换掉的元素
+            let oReplace = document.querySelector("body *:first-child")
+            // 获取所输入的文本
+            let oTag = document.getElementById("tag")
+            let oTxt = document.getElementById("txt")
+            // 创建节点
+            let newTag = document.createElement(oTag.value)
+            let newText = document.createTextNode(oTxt.value)
+            newTag.appendChild(newText)
+            document.body.replaceChild(newTag, oReplace)
+        }
+    }
+
+</script>
+
+</html>

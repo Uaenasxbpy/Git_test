@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ZH-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数的调用</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /*清除浮动*/
+        .clearfix::before,
+        .clearfix::after {
+            content: "";
+            display: table;
+        }
+
+        .clearfix::after {
+            clear: both;
+        }
+
+        /*版心*/
+        .w {
+            width: 1200px;
+            margin: auto;
+        }
+
+        body {
+            background-color: #f3f5f7;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .header {
+            margin-top: 30px;
+            background-color: #999;
+        }
+
+        .nav {
+            background-color: #1393ac;
+        }
+    </style>
+</head>
+
+<body>
+    <li>
+        <a href="javascript:demo1()">点击调用函数1</a>
+    </li>
+    <li>
+        <a href="javascript:demo2()">点击调用函数2</a>
+    </li>
+    <div class="nav"><input type="button" onclick="demo3()" value="点击我呀！">
+        <ul id="test">
+            <li><a href="#"></a>测试1</li>
+            <li><a href="#"></a>测试2</li>
+        </ul>
+
+        <ul id="test1" class="test1">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <button><input type="radio" name="status" value="大学">大学</button>
+        <button><input type="radio" name="status" value="初中">初中</button>
+        <button><input type="radio" name="status" value="高中">高中</button>
+    </div>
+</body>
+<script>
+    function demo1() {
+        alert("你干~~~~嘛？")
+    }
+    function demo2() {
+        alert("你好~~~~~烦。。")
+    }
+    function demo3() {
+        let name = prompt("请输入你的姓名：")
+        let age = +prompt("请告诉我你的年龄：")
+        alert(`亲爱的${name}，你今年已经${age}岁了！`)
+    }
+    window.onload = function () {
+        // 这个函数表示整个HTML页面加载完成后才调用
+        let oUl = document.getElementById("test")
+        // 命名以o开头，让我们知道这是一个DOM对象
+        oUl.style.color = "red"
+
+        let oul = document.getElementById("test1")
+        let oLi = oul.getElementsByTagName("li")
+        let nameArr = ["Hello", "My", "name", "is", "Bob"]
+        let colorArr = ["red", "blue", "green", "yellow", "orange"]
+        for (let i = 0; i < oLi.length; i++) {
+            oLi[i].innerHTML = nameArr[i]
+            oLi[i].style.color = colorArr[i]
+        }
+
+        let oInput = document.getElementsByName("status")
+        oInput[1].checked = true
+
+        document.title = "我把标题修改了"
+    }
+</script>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ZH-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插入元素</title>
+</head>
+
+<body>
+    <ul id="list">
+        <li>你干嘛！！！</li>
+        <li>你干嘛！！！</li>
+        <li>你干嘛！！！</li>
+    </ul>
+    <input type="text" name="" id="txt"><input type="button" id="btn" value="插入">
+</body>
+<script>
+    window.onload = function () {
+        let oBtn = document.getElementById("btn")
+        // 为按钮添加点击事件
+        //  text -> li -> ul
+        oBtn.onclick = function () {
+            let oUl = document.getElementById("list")
+            let oTxt = document.getElementById("txt")
+            // 创建文本节点，并将输入框中的元素给该节点
+            let textNode = document.createTextNode(oTxt.value)
+            // 创建一个li
+            let oLi = document.createElement("li")
+            oLi.appendChild(textNode)
+
+            // 插入到最后
+            //oUl.appendChild(oLi)
+
+            // 插入到最前面
+            oUl.insertBefore(oLi, oUl.firstElementChild)
+
+        }
+    }
+</script>
+
+</html>
