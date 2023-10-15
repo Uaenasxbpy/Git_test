@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html lang="ZH-CN">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS属性操作</title>
+</head>
+<style>
+    .box {
+        width: 100px;
+        height: 100px;
+        background-color: #003399;
+        font-size: large;
+    }
+</style>
+
+<body>
+    <h3>Test1</h3>
+    属性名称：<input type="text" name="" id="txt"><br />
+    更改样式：<input type="text" name="" id="txt1"><br />
+    <input type="button" value="确认修改" id="btn">
+    <div class="box">这是一个盒子</div>
+</body>
+<script>
+    // 获取CSS属性值。
+    // getComputedStyle(obj).attr 等价于 getComputedStyle(obj)["attr"]。
+
+    let Obox = document.getElementsByClassName("box")
+    // getElementsByClassName返回的是一个list
+    let Ocss = getComputedStyle(Obox[0]).backgroundColor;
+    alert(`获取一个css的属性值：${Ocss}`)
+
+    // 设置CSS属性值。
+    // obj.style.attr = "值"; 等价于 obj.style["attr"] = "值"
+    
+
+    // 注意：attr使用的是“骆驼峰型”的CSS属性名
+
+    // 为一个元素同时添加多个样式，使用cssText属性来同时设置多个CSS属性。
+    // obj.style.cssText = "值";
+    // 注意：这里使用的是组成的css属性名称
+
+
+</script>
+
+</html>
