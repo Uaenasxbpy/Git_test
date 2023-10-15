@@ -17,9 +17,15 @@
 
 <body>
     <h3>Test1</h3>
+    <h4>方法一</h4>
     属性名称：<input type="text" name="" id="txt"><br />
     更改样式：<input type="text" name="" id="txt1"><br />
-    <input type="button" value="确认修改" id="btn">
+    <input type="button" value="确认修改" id="btn"><br />
+    <h4>方法二</h4>
+    输入样式：<input type="text" name="" id="txt2"><br />
+    <input type="button" value="一键修改样式" id="btn1"><br />
+
+    <br />
     <div class="box">这是一个盒子</div>
 </body>
 <script>
@@ -28,18 +34,36 @@
 
     let Obox = document.getElementsByClassName("box")
     // getElementsByClassName返回的是一个list
+    // 注意：attr使用的是“骆驼峰型”的CSS属性名
     let Ocss = getComputedStyle(Obox[0]).backgroundColor;
     alert(`获取一个css的属性值：${Ocss}`)
 
     // 设置CSS属性值。
     // obj.style.attr = "值"; 等价于 obj.style["attr"] = "值"
-    
+    // Obox[0].style.backgroundColor = "hotpink"
 
-    // 注意：attr使用的是“骆驼峰型”的CSS属性名
+    window.onload = function () {
+        let Otxt = document.getElementById("txt")
+        let Otxt1 = document.getElementById("txt1")
+        let Obtn = document.getElementById("btn")
+        Obtn.onclick = function () {
+            Obox[0].style[Otxt.value] = Otxt1.value
+        }
 
-    // 为一个元素同时添加多个样式，使用cssText属性来同时设置多个CSS属性。
-    // obj.style.cssText = "值";
-    // 注意：这里使用的是组成的css属性名称
+        // 为一个元素同时添加多个样式，使用cssText属性来同时设置多个CSS属性。
+        // obj.style.cssText = "值";
+        // 注意：这里使用的是组成的css属性名称
+        let Obtn1 = document.getElementById("btn1")
+        let Otxt2 = document.getElementById("txt2")
+        Obtn1.onclick = function () {
+            let val = Otxt2.value
+            Obox[0].style.cssText = val
+        }
+
+
+    }
+
+
 
 
 </script>
